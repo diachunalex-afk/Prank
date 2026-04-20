@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка Танки Онлайн + Opera Gx</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .loader {
+            width: 100%;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 30%;
+            height: 100%;
+            background: #2ecc71;
+            animation: load 10s infinite linear;
+        }
+
+        @keyframes load {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 95%; }
+        }
+
+        .btn-cancel {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-cancel:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        #prank-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            z-index: 9999;
+        }
+
+        #prank-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-screen" class="container">
+        <h1>Установка Танки Онлайн + Opera Gx</h1>
+        <p>Пожалуйста, не отменяйте загрузку</p>
+        <div class="loader">
+            <div class="progress"></div>
+        </div>
+        <p>Идет загрузка ресурсов (32%)...</p>
+        <br>
+        <button class="btn-cancel" onclick="startPrank()">ОТМЕНИТЬ УСТАНОВКУ</button>
+    </div>
+
+    <div id="prank-screen">
+        <img id="prank-image" src="phto.jpg" alt="Пранк">
+    </div>
+
+    <audio id="loud-audio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startPrank() {
+            document.getElementById('main-screen').style.display = 'none';
+            document.getElementById('prank-screen').style.display = 'block';
+            
+            var audio = document.getElementById('loud-audio');
+            audio.volume = 1.0; 
+            audio.play();
+
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            }
+        }
+    </script>
+
+</body>
+</html>
